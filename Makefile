@@ -111,6 +111,10 @@ OBJS += smallfonts.o sharpmem.o st7565.o ssd1306.o
 VPATH += drivers/displays/character/samsung_20T202DA2JA
 OBJS += samsung_20T202DA2JA.o
 
+#LED Matrix Display
+VPATH += drivers/displays/ledmatrix/ht16k33
+OBJS += ht16k33.o
+
 # ChaN FatFS and SD card support
 VPATH += drivers/fatfs
 OBJS += ff.o mmc.o
