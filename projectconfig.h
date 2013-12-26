@@ -120,6 +120,11 @@
 
         LPC1343 LPCXpresso board
 
+    CFG_BRD_LPC1343_R0KET
+    ==============================
+
+        LPC1343 r0ket board (http://r0ket.badge.events.ccc.de/)
+
     -----------------------------------------------------------------------*/
     #define CFG_BRD_LPC1343_REFDESIGN
     // #define CFG_BRD_LPC1343_REFDESIGN_MINIMAL
@@ -128,6 +133,7 @@
     // #define CFG_BRD_LPC1343_802154USBSTICK
     // #define CFG_BRD_LPC1343_OLIMEX_P
     // #define CFG_BRD_LPC1343_LPCXPRESSO
+    // #define CFG_BRD_LPC1343_R0KET
 /*=========================================================================*/
 
 
@@ -314,6 +320,13 @@
       // #define GPIO_ENABLE_IRQ2
       // #define GPIO_ENABLE_IRQ3
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      // #define GPIO_ENABLE_IRQ0
+      #define GPIO_ENABLE_IRQ1
+      // #define GPIO_ENABLE_IRQ2
+      // #define GPIO_ENABLE_IRQ3
+    #endif
 /*=========================================================================*/
 
 
@@ -384,6 +397,11 @@
       #define CFG_UART_BAUDRATE           (115200)
       #define CFG_UART_BUFSIZE            (512)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      #define CFG_UART_BAUDRATE           (115200)
+      #define CFG_UART_BUFSIZE            (512)
+    #endif
 /*=========================================================================*/
 
 
@@ -421,6 +439,11 @@
     #endif
 
     #ifdef CFG_BRD_LPC1343_LPCXPRESSO
+      #define CFG_SSP0_SCKPIN_2_11
+      // #define CFG_SSP0_SCKPIN_0_6
+    #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
       #define CFG_SSP0_SCKPIN_2_11
       // #define CFG_SSP0_SCKPIN_0_6
     #endif
@@ -468,6 +491,11 @@
     #endif
 
     #ifdef CFG_BRD_LPC1343_LPCXPRESSO
+      #define ADC_AVERAGING_ENABLE    (0)
+      #define ADC_AVERAGING_SAMPLES   (5)
+    #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
       #define ADC_AVERAGING_ENABLE    (0)
       #define ADC_AVERAGING_SAMPLES   (5)
     #endif
@@ -525,8 +553,52 @@
       #define CFG_LED_ON                  (0)
       #define CFG_LED_OFF                 (1)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      #define CFG_LED_TOPLEFT_PORT        (1)
+      #define CFG_LED_TOPLEFT_PIN         (7)
+      #define CFG_LED_TOPRIGHT_PORT       (1)
+      #define CFG_LED_TOPRIGHT_PIN        (11)
+      #define CFG_LED_BOTTOMLEFT_PORT     (0)
+      #define CFG_LED_BOTTOMLEFT_PIN      (11)
+      #define CFG_LED_BOTTOMRIGHT_PORT    (1)
+      #define CFG_LED_BOTTOMRIGHT_PIN     (6)
+      #define CFG_LED_PORT                CFG_LED_TOPLEFT_PORT
+      #define CFG_LED_PIN                 CFG_LED_TOPLEFT_PIN
+      #define CFG_LED_ON                  (1)
+      #define CFG_LED_OFF                 (0)
+    #endif
 /*=========================================================================*/
 
+/*=========================================================================
+    ON-BOARD 5-way Stick
+    -----------------------------------------------------------------------
+
+    CFG_STICK_UP_PORT         The port for the on board stick up
+    CFG_STICK_UP_PIN          The pin for the on board stick up
+    CFG_STICK_DOWN_PORT       The port for the on board stick down
+    CFG_STICK_DOWN_PIN        The pin for the on board stick down
+    CFG_STICK_LEFT_PORT       The port for the on board stick left
+    CFG_STICK_LEFT_PIN        The pin for the on board stick left
+    CFG_STICK_RIGHT_PORT      The port for the on board stick right
+    CFG_STICK_RIGHT_PIN       The pin for the on board stick right
+    CFG_STICK_ENTER_PORT      The port for the on board stick enter
+    CFG_STICK_ENTER_PIN       The pin for the on board stick enter
+
+    -----------------------------------------------------------------------*/
+    #ifdef CFG_BRD_LPC1343_R0KET
+      #define CFG_STICK_UP_PORT           (3)
+      #define CFG_STICK_UP_PIN            (3)
+      #define CFG_STICK_DOWN_PORT         (2)
+      #define CFG_STICK_DOWN_PIN          (6)
+      #define CFG_STICK_LEFT_PORT         (0)
+      #define CFG_STICK_LEFT_PIN          (1)
+      #define CFG_STICK_RIGHT_PORT        (2)
+      #define CFG_STICK_RIGHT_PIN         (9)
+      #define CFG_STICK_ENTER_PORT        (2)
+      #define CFG_STICK_ENTER_PIN         (7)
+    #endif
+/*=========================================================================*/
 
 /*=========================================================================
     MICRO-SD CARD
@@ -588,6 +660,13 @@
     #endif
 
     #ifdef CFG_BRD_LPC1343_LPCXPRESSO
+      // #define CFG_SDCARD
+      #define CFG_SDCARD_READONLY         (1) // Must be 0 or 1
+      #define CFG_SDCARD_CDPORT           (3)
+      #define CFG_SDCARD_CDPIN            (0)
+    #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
       // #define CFG_SDCARD
       #define CFG_SDCARD_READONLY         (1) // Must be 0 or 1
       #define CFG_SDCARD_CDPORT           (3)
@@ -675,6 +754,14 @@
       #define CFG_USBCDC_INITTIMEOUT      (5000)
       #define CFG_USBCDC_BUFFERSIZE       (256)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      // #define CFG_USBHID
+      #define CFG_USBCDC
+      #define CFG_USBCDC_BAUDRATE         (115200)
+      #define CFG_USBCDC_INITTIMEOUT      (5000)
+      #define CFG_USBCDC_BUFFERSIZE       (256)
+    #endif
 /*=========================================================================*/
 
 
@@ -736,6 +823,13 @@
     #endif	
 
     #ifdef CFG_BRD_LPC1343_LPCXPRESSO
+      #define CFG_PRINTF_MAXSTRINGSIZE    (255)
+      // #define CFG_PRINTF_UART
+      #define CFG_PRINTF_USBCDC
+      #define CFG_PRINTF_NEWLINE          "\r\n"
+    #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
       #define CFG_PRINTF_MAXSTRINGSIZE    (255)
       // #define CFG_PRINTF_UART
       #define CFG_PRINTF_USBCDC
@@ -902,6 +996,20 @@
       #define CFG_INTERFACE_CONFIRMREADY  (0)
       #define CFG_INTERFACE_LONGSYSINFO   (0)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      #define CFG_INTERFACE
+      #define CFG_INTERFACE_MAXMSGSIZE    (256)
+      #define CFG_INTERFACE_PROMPT        "LPC-P1343 >> "
+      #define CFG_INTERFACE_SILENTMODE    (0)
+      #define CFG_INTERFACE_DROPCR        (0)
+      #define CFG_INTERFACE_ENABLEIRQ     (0)
+      #define CFG_INTERFACE_IRQPORT       (0)
+      #define CFG_INTERFACE_IRQPIN        (7)
+      #define CFG_INTERFACE_SHORTERRORS   (0)
+      #define CFG_INTERFACE_CONFIRMREADY  (0)
+      #define CFG_INTERFACE_LONGSYSINFO   (0)
+    #endif
 /*=========================================================================*/
 
 
@@ -979,6 +1087,11 @@
     #endif	
 
     #ifdef CFG_BRD_LPC1343_LPCXPRESSO
+      // #define CFG_I2CEEPROM
+      #define CFG_I2CEEPROM_SIZE          (3072)
+    #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
       // #define CFG_I2CEEPROM
       #define CFG_I2CEEPROM_SIZE          (3072)
     #endif
@@ -1131,6 +1244,16 @@
       #define CFG_CHIBI_PROMISCUOUS       (0)
       #define CFG_CHIBI_BUFFERSIZE        (128)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      // #define CFG_CHIBI
+      #define CFG_CHIBI_MODE              (0)                 // OQPSK_868MHZ
+      #define CFG_CHIBI_POWER             (0xE9)              // CHB_PWR_EU2_3DBM
+      #define CFG_CHIBI_CHANNEL           (0)                 // 868-868.6 MHz
+      #define CFG_CHIBI_PANID             (0x1234)
+      #define CFG_CHIBI_PROMISCUOUS       (0)
+      #define CFG_CHIBI_BUFFERSIZE        (128)
+    #endif
 /*=========================================================================*/
 
 
@@ -1220,6 +1343,14 @@
       #define CFG_TFTLCD_TS_DEFAULTTHRESHOLD (50)
       #define CFG_TFTLCD_TS_KEYPADDELAY      (100)
     #endif
+
+    #ifdef CFG_BRD_LPC1343_R0KET
+      // #define CFG_TFTLCD
+      #define CFG_TFTLCD_INCLUDESMALLFONTS   (0)
+      #define CFG_TFTLCD_USEAAFONTS          (0)
+      #define CFG_TFTLCD_TS_DEFAULTTHRESHOLD (50)
+      #define CFG_TFTLCD_TS_KEYPADDELAY      (100)
+    #endif
 /*=========================================================================*/
 
 
@@ -1284,7 +1415,8 @@
   !defined CFG_BRD_LPC1343_TFTLCDSTANDALONE_UART && \
   !defined CFG_BRD_LPC1343_802154USBSTICK && \
   !defined CFG_BRD_LPC1343_OLIMEX_P && \
-  !defined CFG_BRD_LPC1343_LPCXPRESSO
+  !defined CFG_BRD_LPC1343_LPCXPRESSO && \
+  !defined CFG_BRD_LPC1343_R0KET
   #error "You must defined a target board (CFG_BRD_LPC1343_REFDESIGN or CFG_BRD_LPC1343_REFDESIGN_MINIMAL or CFG_BRD_LPC1343_TFTLCDSTANDALONE or CFG_BRD_LPC1343_TFTLCDSTANDALONE_UART or CFG_BRD_LPC1343_802154USBSTICK or CFG_BRD_LPC1343_LPCXPRESSO)"
 #endif
 

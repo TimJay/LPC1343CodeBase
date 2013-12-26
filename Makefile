@@ -34,7 +34,7 @@ OPTDEFINES = -D __NEWLIB__
 ##########################################################################
 
 VPATH += project
-OBJS += commands.o
+OBJS += commands.o r0ket.o
 
 VPATH += project/commands
 OBJS += cmd_chibi_addr.o cmd_chibi_tx.o
